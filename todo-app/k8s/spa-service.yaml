@@ -3,12 +3,13 @@ kind: Service
 metadata:
   labels:
     service-label-key: service-label-value 
-  name: service-todo-ui
+  name: service-name
+  namespace: unir
 spec:
   type: ClusterIP
   ports:
-  - name: service-todo-ui-port
+  - name: service-port-name
     port: 80
     protocol: TCP
   selector:
-    deployment-label-key: todo-ui-deployment 
+    deployment-label-key: deployment-label-value
