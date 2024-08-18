@@ -21,5 +21,4 @@ FROM nginx:alpine
 # COPY ALL GENERATED FILES FROM BUILD PROCESS, THEN COPY TO NGINX FOLDER
 COPY --from=build /app/dist/todo-app/ /usr/share/nginx/html
 
-# EXPOSE ON 80 PORT
-EXPOSE 80
+COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf

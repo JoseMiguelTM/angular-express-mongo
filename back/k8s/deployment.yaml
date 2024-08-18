@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-back-app
+  namespace: unir
+  labels:
+    app: todo-back-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-back-app
+  template:
+    metadata:
+      labels:
+        app: todo-back-app
+    spec:
+      containers:
+      - name: back-app
+        image: jm9704/todo-back:v1  # Imagen de Docker Hub
+        ports:
+        - containerPort: 8080  # Puerto en el que tu app escucha
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "3000"
