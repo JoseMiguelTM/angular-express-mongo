@@ -4,9 +4,13 @@ interface MongoResponse {
     __v: number;
 }
 
-export interface ToDo {
+export interface MongoToDo {
     code: number;
     success: boolean;
     message: string;
     data: MongoResponse;
+}
+
+export interface ToDo {
+    text: string;
 }

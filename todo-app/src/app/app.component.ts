@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToDo } from './shared/todo.model';
+import { MongoToDo, ToDo } from './shared/todo.model';
 
 @Component({
   selector: 'app-root',
@@ -9,19 +9,9 @@ import { ToDo } from './shared/todo.model';
 export class AppComponent implements OnInit {
   title = 'To Do App';
   toDoContent: string | undefined;
-  toDoList: ToDo[] = [];
+  toDoList: MongoToDo[] = [];
 
   ngOnInit(): void {
-    this.toDoList?.push({
-      code: 200,
-      success: true,
-      message: 'Testing',
-      data: {
-        text: 'Test',
-        _id: "0000",
-        __v: 0
-      }
-    });
     console.log(this.toDoList)
   }
 
