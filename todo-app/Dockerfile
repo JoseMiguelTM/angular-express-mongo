@@ -21,4 +21,5 @@ FROM nginx:alpine
 # COPY ALL GENERATED FILES FROM BUILD PROCESS, THEN COPY TO NGINX FOLDER
 COPY --from=build /app/dist/todo-app/ /usr/share/nginx/html
 
+# COPY NGINX CONFIGURATION FILE FROM FILES TO CONTAINER
 COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
