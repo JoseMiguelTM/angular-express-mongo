@@ -1,27 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-back-app
+  name: todo-app-back
   namespace: unir
   labels:
-    app: todo-back-app
+    app: todo-app-back
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: todo-back-app
+      app: todo-app-back
   template:
     metadata:
       labels:
-        app: todo-back-app
+        app: todo-app-back
     spec:
       containers:
-      - name: back-app
-        image: jm9704/todo-back:v1  # Imagen de Docker Hub
+      - name: todo-app-back
+        image: jm9704/todo-app-back:v1 # Imagen de Docker Hub
         ports:
-        - containerPort: 8080  # Puerto en el que tu app escucha
+        - containerPort: 8080 # Puerto en el que tu app escucha
+        resources:
+          limits:
+            memory: 200Mi
+            cpu: "1"
+          requests:
+            memory: 100Mi
+            cpu: 100m
         env:
-        - name: NODE_ENV
-          value: "production"
-        - name: PORT
+        - name: MONGODB_PASS
+          value: "7kJe1wDgsi2SSOk7"
+        - name: MONGODB_USER
+          value: "jmrodriguez9704"
+        - name: MONGODB_PARAMS
+          value: "@todo-db.wo12t.mongodb.net/?retryWrites=true&w=majority&appName=todo-db"
+        - name: MONGODB_PROTO
+          value: "mongodb+srv://"
+        - name: NODE_PORT
           value: "3000"
