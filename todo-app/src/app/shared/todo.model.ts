@@ -8,7 +8,7 @@ export interface MongoToDo {
     code: number;
     success: boolean;
     message: string;
-    data: MongoResponse;
+    data: MongoResponse[];
 }
 
 export interface ToDo {

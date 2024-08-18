@@ -10,8 +10,8 @@
     <button cdsButton (click)="saveToDo()">Save</button>
   </section>
   <section class="app-component--todo-list">
-    <p *ngFor="let todo of toDoList">
-      {{ todo.data.text }}
+    <p *ngFor="let todo of toDoList?.data">
+      {{ todo.text }}
     </p>
   </section>
 </main>
