@@ -15,7 +15,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get("/api")
+      .get("localhost:8080/api")
       .then((response) => {
         this.setState({
           todos: response.data.data,
