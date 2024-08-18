@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service-label-key: service-label-value 
+  name: service-todo-ui
+spec:
+  type: ClusterIP
+  ports:
+  - name: service-todo-ui-port
+    port: 80
+    protocol: TCP
+  selector:
+    deployment-label-key: todo-ui-deployment 

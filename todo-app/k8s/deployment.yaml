@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-ui
+  namespace: unir
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todo-ui
+  template:
+    metadata:
+      labels:
+        app : todo-ui
+    spec:
+      containers:
+        - name: todo-ui
+          image: jm9704/todo-ui:v1
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
