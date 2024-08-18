@@ -1,0 +1,17 @@
+<app-header></app-header>
+<main class="main">
+	<section class="app-component--input">
+    <cds-text-label>
+      Write a To Do
+      <input cdsText type="text" class="input-field" [(ngModel)]="toDoContent">
+    </cds-text-label>
+  </section>
+  <section class="app-component--button">
+    <button cdsButton (click)="saveToDo()">Save</button>
+  </section>
+  <section class="app-component--todo-list">
+    <p *ngFor="let todo of toDoList">
+      {{ todo.data.text }}
+    </p>
+  </section>
+</main>
