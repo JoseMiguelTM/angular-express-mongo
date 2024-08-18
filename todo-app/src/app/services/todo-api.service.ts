@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environment/environment';
-import { MongoToDo, ToDo } from '../shared/todo.model';
+import { MongoToDo, ToDo, ToDoResponse } from '../shared/todo.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
@@ -11,27 +11,13 @@ export class TodoApiService {
 
   private API_URL = environment.API_URL;
 
-  private toDoList: MongoToDo[] = [];
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) { }
-
-  getToDos(): Observable<MongoToDo[]> {
-    this.toDoList?.push({
-      code: 200,
-      success: true,
-      message: 'Testing',
-      data: {
-        text: 'Test',
-        _id: "0000",
-        __v: 0
-      }
-    });
-
-    return of(this.toDoList);
+  getToDos(): Observable<MongoToDo> {
+    return this.httpClient.get<MongoToDo>(`${this.API_URL}/api`);
   }
 
-  saveToDo(toDoItem: ToDo): Observable<any> {
-    console.log(toDoItem);
-    return of(toDoItem);
+  saveToDo(toDoItem: ToDo): Observable<ToDoResponse> {
+    return this.httpClient.post<ToDoResponse>(`${this.API_URL}/api/todos`, toDoItem);
   }
 }
