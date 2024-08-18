@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MongoToDo, ToDo } from './shared/todo.model';
+import { MongoToDo, ToDo, MongoResponse } from './shared/todo.model';
 import { TodoApiService } from './services/todo-api.service';
 
 @Component({
@@ -37,7 +37,8 @@ export class AppComponent implements OnInit {
     }
     this.todoService.saveToDo(todoBody).subscribe({
       next: (response) => {
-        console.log(response);
+        const todoNewItem = response.data as MongoResponse;
+        this.toDoList?.data.push(todoNewItem);
       },
       error: (error) => {
         console.error(error);
