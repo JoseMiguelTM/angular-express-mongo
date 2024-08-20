@@ -23,3 +23,5 @@ COPY --from=build /app/dist/todo-app/ /usr/share/nginx/html
 
 # COPY NGINX CONFIGURATION FILE FROM FILES TO CONTAINER
 COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80

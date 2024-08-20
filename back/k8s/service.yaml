@@ -6,9 +6,11 @@ metadata:
   labels:
     app: todo-app-back
 spec:
-  type: NodePort
-  ports:
-  - port: 8080
-    protocol: TCP
   selector:
     app: todo-app-back
+  ports:
+    - protocol: TCP
+      port: 80         # Puerto en el que el servicio estará disponible
+      targetPort: 80   # Puerto del contenedor en el Deployment
+      nodePort: 30007  # Puerto en los nodos del clúster
+  type: NodePort
