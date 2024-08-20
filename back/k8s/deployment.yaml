@@ -2,11 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: todo-app-back
-  namespace: unir
+  namespace: app-unir
   labels:
     app: todo-app-back
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: todo-app-back
@@ -29,12 +29,27 @@ spec:
             cpu: 100m
         env:
         - name: MONGODB_PASS
-          value: "7kJe1wDgsi2SSOk7"
+          valueFrom: 
+            secretKeyRef:
+              name: todo-app-back-secret
+              key: MONGODB_PASS
         - name: MONGODB_USER
-          value: "jmrodriguez9704"
+          valueFrom: 
+            secretKeyRef:
+              name: todo-app-back-secret
+              key: MONGODB_USER
         - name: MONGODB_PARAMS
-          value: "@todo-db.wo12t.mongodb.net/?retryWrites=true&w=majority&appName=todo-db"
+          valueFrom: 
+            secretKeyRef:
+              name: todo-app-back-secret
+              key: MONGODB_PARAMS
         - name: MONGODB_PROTO
-          value: "mongodb+srv://"
+          valueFrom: 
+            secretKeyRef:
+              name: todo-app-back-secret
+              key: MONGODB_PROTO
         - name: NODE_PORT
-          value: "3000"
+          valueFrom: 
+            secretKeyRef:
+              name: todo-app-back-secret
+              key: NODE_PORT

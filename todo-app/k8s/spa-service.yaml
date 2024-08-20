@@ -2,14 +2,14 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    service-label-key: service-label-value 
-  name: service-name
-  namespace: unir
+    name: todo-ui
+  name: service-todo-ui
+  namespace: app-unir
 spec:
   type: NodePort
   ports:
-  - name: service-port-name
+  - name: todo-ui
     port: 80
     protocol: TCP
   selector:
-    deployment-label-key: deployment-label-value
+    name: todo-ui
